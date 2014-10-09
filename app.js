@@ -33,12 +33,15 @@ var restApp = angular.module( 'restApp', [] )
 
 	$scope.openItem = function() {
 		console.log( 'open item' );
+		$.mobile.changePage('#menuItemPage', {transition: "slideup"} );
 	}
 
+	/*
 	$( '#menuList li' ).on('tap', function(){
 		console.log( 'menu item' );
 		$.mobile.changePage('#menuItemPage', {transition: "slideup"} );
 	})
+  */
 
 }]);
 
