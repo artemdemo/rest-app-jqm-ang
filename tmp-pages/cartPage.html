@@ -1,0 +1,52 @@
+<div data-role="page" id="cartPage">
+
+	<div data-role="header">
+		<h1>Cart</h1>
+		<a href="#menuPage" class="ui-btn-right">Menu</a>
+	</div>
+
+	<div role="main" class="ui-content">
+
+		<div class="cart-empty" ng-hide="cart">
+			Cart is empty
+		</div>
+
+		<div class="cart-items" ng-show="cart">
+			<ul>
+				<li ng-repeat="item in cart">
+					<div class="item">
+						{{ item.name }} x {{ item.amount }}
+						<div class="edit" ng-click="editItem( item )"><img src="img/edit.png" /></div>
+						<div class="price">{{ currency + item.price }}</div>
+					</div>
+					<div class="modifiers">
+						<ul>
+							<li ng-repeat="mod in cart[$index].modifiers">
+								<div class="modifier">
+									- {{ mod.name }}
+									<div class="price">{{ currency + mod.price }}</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="cart-totals">
+			<ul>
+				<li class="ui-grid-a">
+					<div class="ui-block-a fc">Total:</div>
+					<div class="ui-block-b sc">{{ currency + total }}</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="buttons">
+			<button type="button" data-theme="a" ng-click="checkout()">Checkout</button>
+		</div>
+		
+
+	</div>
+	
+</div>

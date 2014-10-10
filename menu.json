@@ -43,26 +43,7 @@
       "tax": 2.32,
       "quantity": 15,
       "image": "food1.jpg",
-      "modifiers": [
-        {
-          "id": "54368f5c568f52903cc92dc0",
-          "name": "Gynko",
-          "price": 1.53,
-          "tax": 1.71
-        },
-        {
-          "id": "54368f5c080eb51d774bd077",
-          "name": "Jasper",
-          "price": 3.71,
-          "tax": 1.74
-        },
-        {
-          "id": "54368f5c10fb6b140ede7123",
-          "name": "Sonique",
-          "price": 1.75,
-          "tax": 1.14
-        }
-      ]
+      "modifiers": []
     },
     {
       "id": "54368f5cfcf4a1819f0b704d",
@@ -71,26 +52,7 @@
       "tax": 0.87,
       "quantity": 14,
       "image": "food2.jpg",
-      "modifiers": [
-        {
-          "id": "54368f5c92421d83b1de6784",
-          "name": "Typhonica",
-          "price": 1.4,
-          "tax": 2.02
-        },
-        {
-          "id": "54368f5c345e3f7a28830621",
-          "name": "Medcom",
-          "price": 0.17,
-          "tax": 0.75
-        },
-        {
-          "id": "54368f5cc23e21fe35b88d8a",
-          "name": "Exotechno",
-          "price": 0.64,
-          "tax": 0.62
-        }
-      ]
+      "modifiers": []
     },
     {
       "id": "54368f5ca09af7e3e3805276",

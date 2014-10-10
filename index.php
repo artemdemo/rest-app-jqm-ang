@@ -20,15 +20,15 @@
 <body ng-app="restApp" ng-controller="mainCtrl">
 
 
-<div data-role="page" id="first" ng-controller="menuListCtrl">
+<div data-role="page" id="menuPage" ng-controller="menuListCtrl">
 
 	<div role="main" class="ui-content">
 		
 		<ul id="menuList">
-			<li ng-repeat="item in products" ng-click="openItem()">
+			<li ng-repeat="item in products" ng-click="openItem( item )">
 				<div class="thumbnail"><img ng-src="img/{{ item.image }}" /></div>
 				<div class="name">{{ item.name }}</div>
-				<div class="price">${{ item.price }}</div>
+				<div class="price">{{ currency + item.price }}</div>
 			</li>
 		</ul>
 		
@@ -40,6 +40,8 @@
 
 
 <menu-item-page></menu-item-page>
+
+<cart-page></cart-page>
 
 
 </body>
