@@ -43,7 +43,15 @@ restApp
 			}
 
 			$scope.saveItem = function() {
+				cartFactory.removeItem( $scope.currentItem );
+				$scope.addItem();
+			}
 
+			$scope.removeItem = function() {
+				cartFactory.removeItem( $scope.currentItem );
+				$.mobile.changePage('#cartPage', {transition: "slideup"} );
+				$rootScope.$broadcast('open-cart');
+				console.log( cartFactory.getCart() );
 			}
 		}
 	}
@@ -65,6 +73,8 @@ restApp
 			});
 
 			$scope.editItem = function( item ) {
+				// function setCurrentItemById fill return TRUE if item was found, otherwise it will return FALSE
+				// therefore we can rely on it in further code
 				var itemSelected = menuFactory.setCurrentItemById( item.id );
 				if ( itemSelected ){
 					menuFactory.setCurrentAmount( item.amount );
@@ -90,12 +100,25 @@ restApp
 			$scope.$on('open-item', function(event, args) {
 				$scope.currentItem = menuFactory.getCurrentItem();
 				$scope.currency = menuFactory.getCurrency();
+				$scope.currentItemStatus = menuFactory.getCurrentItemStatus();
 				// angular need time to proceed ngRepeat, short after that I need to refresh widget
 				$timeout(function(){
-					$( "#select-modifiers" ).find( 'option' ).each(function(){
-						console.log( this );
-						$(this).removeAttr('selected');
-					});
+					// If Item is new, then I need to clean it, otherwise, I need to select selected modifiers
+					if ( $scope.currentItemStatus == 'new' ){
+						// There is issue with selectmenu if opening twice the same item
+						// I need to make sure, that all items are deselected
+						$( "#select-modifiers" ).find( 'option' ).each(function(){
+							$(this).removeAttr('selected');
+						});
+					} else {
+						var currentModifiers = menuFactory.getCurrentModifiers();
+						$( "#select-modifiers" ).find( 'option' ).each(function(){
+							$(this).removeAttr('selected');
+							for(var i=0; i < currentModifiers.length; i++){
+								if( $(this).val() == currentModifiers[i].indexID ) $(this).attr('selected', 'selected');
+							}
+						});
+					}
 					$( "#select-modifiers" ).selectmenu( 'refresh' );
 				}, 100);
 			});

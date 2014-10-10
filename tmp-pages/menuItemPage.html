@@ -34,7 +34,10 @@
 		</div>
 
 		<div class="ui-grid-a buttons">
-			<div class="ui-block-a"><a href="#menuPage" class="ui-btn ui-btn-a ui-shadow ui-corner-all">Cancel</a></div>
+			<div class="ui-block-a">
+				<a href="#menuPage" class="ui-btn ui-btn-a ui-shadow ui-corner-all" ng-show="itemStatus == 'new'">Cancel</a>
+				<button type="button" data-theme="a" ng-click="removeItem()" ng-show="itemStatus == 'edit'">Remove</button>
+			</div>
 			<div class="ui-block-b">
 				<button type="button" data-theme="a" ng-click="addItem()" ng-show="itemStatus == 'new'">+ Add to Cart</button>
 				<button type="button" data-theme="a" ng-click="saveItem()" ng-show="itemStatus == 'edit'">Save</button>

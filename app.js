@@ -69,6 +69,10 @@ var restApp = angular.module( 'restApp', [] )
 
 		setCurrentModifiers: function( newModifiers ) {
 			currentModifiers = newModifiers;
+		},
+
+		getCurrentModifiers: function() {
+			return currentModifiers;
 		}
 	}
 }])
@@ -115,6 +119,17 @@ var restApp = angular.module( 'restApp', [] )
 				}
 
 			return total.toFixed(2);
+		},
+
+		removeItem: function( item ) {
+			var id = item.id;
+			for (var i=0; i < cart.length; i++){
+				if ( cart[i].id == id ) {
+					cart.splice(i, 1);
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 }])
@@ -139,6 +154,7 @@ var restApp = angular.module( 'restApp', [] )
 	$scope.openItem = function( item ) {
 		menuFactory.setCurrentItem( item );
 		menuFactory.setCurrentItemStatus( 'new' );
+		menuFactory.setCurrentAmount( 1 );
 		// broadcast command that item will be opend, so directive with items page will be prepared
 		$rootScope.$broadcast('open-item');
 		$.mobile.changePage('#menuItemPage', {transition: "slideup"} );
