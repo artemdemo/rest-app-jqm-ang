@@ -137,6 +137,13 @@ ul {
 
 /*-------------- Cart -----------------*/
 
+#cartPage .ui-header a.ui-btn {
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+	min-width: 60px;
+}
+
 .cart-items {
 	padding: 0.6em;
 }
