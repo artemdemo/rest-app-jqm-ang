@@ -12,9 +12,9 @@ restApp
 			$scope.$on('open-item', function(event, args) {
 				$scope.currentItem = menuFactory.getCurrentItem();
 				$scope.currency = menuFactory.getCurrency();
-				$scope.cartCount = cartFactory.getCartCount();
 				$scope.selectedAmount = menuFactory.getCurrentAmount();
 				$scope.itemStatus = menuFactory.getCurrentItemStatus();
+				$scope.cartCount = cartFactory.getCartCount();
 			});
 
 			$scope.selectNum = function(num) {
@@ -110,6 +110,8 @@ restApp
 						$( "#select-modifiers" ).find( 'option' ).each(function(){
 							$(this).removeAttr('selected');
 						});
+						// I still need to remove unneeded elements, because jQm dont' do it correctly
+						$('#select-modifiers-menu li a').removeClass('ui-checkbox-on').addClass('ui-checkbox-off');
 					} else {
 						var currentModifiers = menuFactory.getCurrentModifiers();
 						$( "#select-modifiers" ).find( 'option' ).each(function(){

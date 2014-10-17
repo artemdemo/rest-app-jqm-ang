@@ -100,6 +100,14 @@ ul {
 	text-align: center;
 }
 
+.item-count .qty {
+	color: gray;
+}
+
+.item-count ul {
+	display: inline-block;
+}
+
 .item-count ul li {
 	display: inline-block;
 	border: 2px solid rgb(223, 174, 85);
